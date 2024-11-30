@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../server/config.php'; // Include database connection
+require_once '../server/config.php'; 
 
 // Redirect if not logged in
 if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
@@ -8,21 +8,19 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id']; // Get user_id from session
+$user_id = $_SESSION['user_id']; 
 
 // Pagination setup (only 1 recipe per page)
-$recipes_per_page = 1; // Number of recipes per page (1 per page)
+$recipes_per_page = 1; 
 
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Get the current page from URL
-$offset = ($page - 1) * $recipes_per_page; // Calculate the offset for the query
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
+$offset = ($page - 1) * $recipes_per_page; 
 
-// Prepare the query to fetch one recipe with pagination
 $stmt = $conn->prepare("SELECT recipe_id, title, description, ingredients, steps FROM recipes WHERE user_id = ? LIMIT ?, ?");
-$stmt->bind_param("iii", $user_id, $offset, $recipes_per_page); // Bind user_id and pagination limits
+$stmt->bind_param("iii", $user_id, $offset, $recipes_per_page); 
 $stmt->execute();
 $stmt->store_result();
 
-// Pagination logic
 // Get the total number of recipes for the user to calculate total pages
 $total_recipes_stmt = $conn->prepare("SELECT COUNT(*) FROM recipes WHERE user_id = ?");
 $total_recipes_stmt->bind_param("i", $user_id);
@@ -41,7 +39,7 @@ $total_pages = ceil($total_recipes / $recipes_per_page);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Recipe</title>
-    <link rel="stylesheet" href="../css/style.css"> <!-- Make sure this path is correct -->
+    <link rel="stylesheet" href="../css/style.css"> 
 </head>
 <body>
     <header>
@@ -50,7 +48,6 @@ $total_pages = ceil($total_recipes / $recipes_per_page);
     </header>
 
     <main>
-        <!-- Display recipes here -->
         <div class="recipes-list">
             <?php
             // Check if there are any recipes for the user
@@ -96,7 +93,6 @@ $total_pages = ceil($total_recipes / $recipes_per_page);
             ?>
         </div>
 
-        <!-- Buttons for Add Recipe and Back to Home -->
         <div class="button-group">
             <a href="add_recipe.php" class="button">Add a New Recipe</a>
             <a href="index.php" class="button">Back to Home</a>
