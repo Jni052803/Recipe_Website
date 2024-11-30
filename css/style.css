@@ -1,4 +1,4 @@
-/* Global styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -22,7 +22,6 @@ h1 {
     margin: 0;
 }
 
-/* Recipe container */
 .recipe {
     background-color: white;
     padding: 20px;
@@ -31,11 +30,10 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons container */
 .recipe-actions {
-    margin-top: 10px; /* Add space between the recipe content and buttons */
+    margin-top: 10px; 
     display: flex;
-    gap: 10px; /* Adds space between the Edit and Delete buttons */
+    gap: 10px; 
 }
 
 .button {
@@ -46,7 +44,7 @@ h1 {
     cursor: pointer;
     text-decoration: none;
     border-radius: 5px;
-    display: inline-block; /* Ensure buttons are inline but allow margin */
+    display: inline-block; 
 }
 
 .button:hover {
@@ -54,22 +52,19 @@ h1 {
 }
 
 .recipe-actions a:last-child {
-    margin-right: 0; /* Remove right margin from the last button */
+    margin-right: 0; 
 }
 
-/* Wrapper for recipes */
 .recipes-list {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Links */
 a {
     color: #4CAF50;
 }
 
-/* Pagination styles */
 .pagination {
     margin-top: 20px;
     text-align: center;
@@ -96,7 +91,6 @@ a {
     border-radius: 5px;
 }
 
-/* Header and logout button styling */
 header {
     display: flex;
     justify-content: space-between;
@@ -109,7 +103,7 @@ header h1 {
 }
 
 header p {
-    color: white; /* Set username and logout link to white */
+    color: white; 
     margin: 0;
 }
 
@@ -220,7 +214,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Styling for alerts or success messages */
 p {
     font-size: 16px;
     color: #333;
