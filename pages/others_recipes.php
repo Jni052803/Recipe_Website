@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../server/config.php'; // Include database connection
+require_once '../server/config.php'; 
 
 // Redirect if not logged in
 if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
@@ -57,7 +57,7 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($title); ?> - Recipe</title>
-    <link rel="stylesheet" href="../css/style.css"> <!-- External stylesheet -->
+    <link rel="stylesheet" href="../css/style.css"> 
 </head>
 <body>
     <header>
