@@ -8,9 +8,8 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id']; // Logged-in user's ID
+$user_id = $_SESSION['user_id']; 
 
-// Fetch all recipe IDs to generate numbered buttons
 $all_recipes_stmt = $conn->prepare("SELECT recipe_id FROM recipes WHERE user_id != ? ORDER BY recipe_id ASC");
 $all_recipes_stmt->bind_param("i", $user_id);
 $all_recipes_stmt->execute();
@@ -32,7 +31,6 @@ if ($current_index < 0 || $current_index >= count($recipe_ids)) {
 
 $recipe_id = $recipe_ids[$current_index];
 
-// Fetch the specific recipe details
 $stmt = $conn->prepare("SELECT r.recipe_id, r.title, r.description, r.ingredients, r.steps, u.username 
                         FROM recipes r 
                         INNER JOIN users u ON r.user_id = u.user_id 
