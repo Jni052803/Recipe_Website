@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../server/config.php'; // Include database connection
+require_once '../server/config.php'; 
 
 // Redirect if not logged in
 if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
@@ -8,7 +8,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Handle form submission (server-side validation would still be important as well)
+// Handle form submission 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -16,13 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $steps = $_POST['steps'];
 
     if (!empty($title) && !empty($description) && !empty($ingredients) && !empty($steps)) {
-        $user_id = $_SESSION['user_id']; // Get user_id from session
+        $user_id = $_SESSION['user_id']; 
 
         // Prepare SQL statement to insert recipe into database
         $stmt = $conn->prepare("INSERT INTO recipes (user_id, title, description, ingredients, steps) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("issss", $user_id, $title, $description, $ingredients, $steps);
 
-        // Execute the query and check for success
         if ($stmt->execute()) {
             echo "<p>Recipe added successfully! <a href='recipes.php'>View Recipes</a></p>";
         } else {
@@ -42,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Recipe</title>
-    <link rel="stylesheet" href="../css/style.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="../css/style.css"> 
     <script>
         function validateForm() {
             // Get form fields
