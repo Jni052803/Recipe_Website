@@ -29,7 +29,7 @@ session_start();
             <div class="button-group">
                 <a href="recipes.php" class="button">View Your Recipes</a>
                 <a href="add_recipe.php" class="button">Add a Recipe</a>
-                <a href="others_recipes.php" class="button">View Recipes from Others</a> <!-- New link -->
+                <a href="others_recipes.php" class="button">View Recipes from Others</a> 
             </div>
         <?php else: ?>
             <p>You must log in to view or add recipes.</p>
