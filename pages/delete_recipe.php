@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../server/config.php'; // Include database connection
+require_once '../server/config.php'; 
 
 // Redirect if not logged in
 if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
