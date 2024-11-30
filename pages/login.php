@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../server/config.php'; // Include your database connection
+require_once '../server/config.php'; 
 
 // Check if user is already logged in
 if (isset($_SESSION['user_id'])) {
@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
     <main class="login-form">
-        <!-- Login Form -->
         <form action="login.php" method="POST" class="form-container">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
